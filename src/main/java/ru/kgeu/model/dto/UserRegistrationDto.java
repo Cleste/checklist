@@ -1,22 +1,16 @@
 package ru.kgeu.model.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import ru.kgeu.model.entity.RoleEnum;
 
-@Builder
-@Setter
 @Getter
-public class UserDto {
-    private Long id;
-
+@Setter
+public class UserRegistrationDto {
     private String username;
 
-    private String password;
-
-    private String roleName;
+    private RoleEnum role;
 
     private String lastname;
 

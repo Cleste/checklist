@@ -1,6 +1,7 @@
 package ru.kgeu.model.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @Table(name = "role")
 public class Role {
@@ -21,6 +23,9 @@ public class Role {
     private Long id;
 
     private String name;
+
+    @Column(name = "rus_name")
+    private String rusName;
 
     @ManyToMany(mappedBy = "roles")
     private List<User> users;

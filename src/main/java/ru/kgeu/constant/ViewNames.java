@@ -16,6 +16,7 @@ public interface ViewNames {
     interface Login {
         String VIEW_NAME = "login";
         String PAGE_URL = Main.PAGE_URL + VIEW_NAME;
+        String SUCCESSFULLY_LOGOUT_PAGE_URL = PAGE_URL + "?logout=true";
     }
     interface Logout {
         String PAGE_URL = Main.PAGE_URL + "logout";

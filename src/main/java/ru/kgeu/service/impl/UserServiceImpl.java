@@ -3,6 +3,7 @@ package ru.kgeu.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.kgeu.model.dto.UserDto;
+import ru.kgeu.model.dto.UserRegistrationDto;
 import ru.kgeu.model.entity.Role;
 import ru.kgeu.model.entity.User;
 import ru.kgeu.model.mapper.UserMapper;
@@ -32,10 +33,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(UserDto userDto) {
-        User newUser = userMapper.toUser(userDto);
-        newUser.setRoles(new ArrayList<>());
-        newUser.getRoles().add(roleRepository.findById(1L).orElse(new Role()));
+    public void save(UserRegistrationDto userDto) {
+        User newUser = User.builder()
+                .firstname(userDto.getFirstname())
+                .lastname(userDto.getLastname())
+                .username(userDto.getUsername())
+                .build();
+        if (userDto.getRole() == null) {
+            newUser.setRoles(new ArrayList<>());
+            newUser.getRoles().add(roleRepository.findByName("ROLE_STUDENT"));
+            newUser.setStudentGroup(userDto.getStudentGroup());
+        } else {
+            newUser.setRoles(new ArrayList<>());
+            newUser.getRoles().add(roleRepository.findByName(userDto.getRole().toString()));
+        }
         userRepository.save(newUser);
     }
 }

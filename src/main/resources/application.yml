@@ -1,11 +1,13 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}?${DB_SSL}
+    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:
+    generate-ddl: false
     show-sql: true
-    hibernate.ddl-auto: none
+    hibernate.ddl-auto: validate
+    properties.hibernate.jdbc.lob.non_contextual_creation: true
   mail:
     protocol: smtps
     host: ${MAIL_HOST}
@@ -13,3 +15,7 @@ spring:
     username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}
     debug: true
+  session:
+    jdbc:
+      initialize-schema: always
+      table-name: SPRING_SESSION

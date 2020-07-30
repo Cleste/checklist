@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="POST">
+    <button id="send" type="submit">Log out</button>
+</form>
+<button onclick="hide('addStudent')">Добавить студента</button>
+<form id="addStudent" action="#" th:action="@{/users}" th:object="${newUser}"
+      method="post">
+    <input placeholder="Имя" type="text" th:field="*{firstname}"/>
+    <input placeholder="Фамилия" type="text" th:field="*{lastname}"/>
+    <input placeholder="Почта" type="text" th:field="*{username}"/>
+    <input placeholder="Группа" type="text" th:field="*{studentGroup}"/>
+    <button type="submit">Добавить</button>
+</form>
+<button onclick="hide('addTeacher')">Добавить работника</button>
+<form id="addTeacher" action="#" th:action="@{/users}" th:object="${newUser}"
+      method="post">
+    <input placeholder="Имя" type="text" th:field="*{firstname}"/>
+    <input placeholder="Фамилия" type="text" th:field="*{lastname}"/>
+    <input placeholder="Почта" type="text" th:field="*{username}"/>
+    <select name="role">
+        <option th:each="roleOpt : ${T(ru.kgeu.model.entity.RoleEnum).values()}"
+                th:value="${roleOpt}" th:text="${roleOpt.getName()}"></option>
+    </select>
+    <button type="submit">Добавить</button>
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th> Фамилия</th>
+        <th> Имя</th>
+        <th> Роль</th>
+        <th> Группа</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.getLastname()}"> Фамилия </span></td>
+        <td><span th:text="${user.getFirstname()}"> Имя </span></td>
+        <td><span th:text="${user.getRoleName()}"> Роль </span></td>
+        <td><span th:text="${user.getStudentGroup()}"> Группа </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    function hide(element) {
+        let block = document.getElementById(element);
+        if (block.style.display === "none") {
+            block.style.display = "block";
+        } else {
+            block.style.display = "none";
+        }
+    }
+</script>
+
