@@ -11,11 +11,11 @@ public enum RoleEnum {
 
     private String name;
 
-    RoleEnum(String name){
+    RoleEnum(String name) {
         this.name = name;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 }

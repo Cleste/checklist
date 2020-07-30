@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Группа</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td><span th:text="${student.getUsername()}"></span></td>
+        <td><span th:text="${student.getFirstname()}"></span></td>
+        <td><span th:text="${student.getStudentGroup()}"></span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

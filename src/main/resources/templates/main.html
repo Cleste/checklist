@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+<div class="col-md-12" sec:authorize="hasRole('ROLE_DEAN')">
+    <a href="/" th:href="@{/users}">Все пользователи</a>
+</div>
+<div class="col-md-12">
+    <a href="/" th:href="@{/students}">Список студентов</a>
+</div>
+</body>
+</html>

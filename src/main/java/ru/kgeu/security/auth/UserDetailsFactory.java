@@ -1,13 +1,14 @@
 package ru.kgeu.security.auth;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import ru.kgeu.model.entity.Role;
-import ru.kgeu.model.entity.User;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import ru.kgeu.model.entity.Role;
+import ru.kgeu.model.entity.User;
 
 public final class UserDetailsFactory {
 

@@ -1,18 +1,19 @@
 package ru.kgeu.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
+
 import ru.kgeu.model.dto.UserDto;
 import ru.kgeu.model.dto.UserRegistrationDto;
-import ru.kgeu.model.entity.Role;
 import ru.kgeu.model.entity.User;
 import ru.kgeu.model.mapper.UserMapper;
 import ru.kgeu.repository.RoleRepository;
 import ru.kgeu.repository.UserRepository;
 import ru.kgeu.service.api.UserService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -48,5 +49,11 @@ public class UserServiceImpl implements UserService {
             newUser.getRoles().add(roleRepository.findByName(userDto.getRole().toString()));
         }
         userRepository.save(newUser);
+    }
+
+    @Override
+    public UserDto findAllStudents() {
+        return userMapper.toUserDto(userRepository
+                .findByRolesContains(roleRepository.findByName("ROLE_STUDENT")));
     }
 }

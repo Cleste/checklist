@@ -1,18 +1,16 @@
 package ru.kgeu.controller;
 
-import javax.validation.Valid;
-
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import ru.kgeu.constant.ViewNames;
-import ru.kgeu.model.dto.UserDto;
 import ru.kgeu.model.dto.UserRegistrationDto;
 import ru.kgeu.service.api.UserService;
 
@@ -31,7 +29,7 @@ public class UserController {
 
 
     @GetMapping
-    public String getAllUsers(Model model){
+    public String getAllUsers(Model model) {
         model.addAttribute("users", userService.findAll());
         return ViewNames.User.VIEW_NAME;
     }

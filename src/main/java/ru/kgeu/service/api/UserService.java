@@ -1,10 +1,10 @@
 package ru.kgeu.service.api;
 
+import java.util.List;
+
 import ru.kgeu.model.dto.UserDto;
 import ru.kgeu.model.dto.UserRegistrationDto;
 import ru.kgeu.model.entity.User;
-
-import java.util.List;
 
 public interface UserService {
     User findByUsername(String username);
@@ -12,4 +12,6 @@ public interface UserService {
     List<UserDto> findAll();
 
     void save(UserRegistrationDto user);
+
+    UserDto findAllStudents();
 }

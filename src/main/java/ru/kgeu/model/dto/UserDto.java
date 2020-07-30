@@ -4,8 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import ru.kgeu.model.entity.RoleEnum;
-
 @Builder
 @Setter
 @Getter
