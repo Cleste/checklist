@@ -7,7 +7,7 @@
 </head>
 <body>
 <form th:action="@{/logout}" method="POST">
-    <button id="send" type="submit">Log out</button>
+    <button id="send" type="submit">Выйти</button>
 </form>
 <div class="col-md-12" sec:authorize="hasRole('ROLE_DEAN')">
     <a href="/" th:href="@{/users}">Все пользователи</a>
