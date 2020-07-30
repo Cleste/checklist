@@ -6,7 +6,7 @@ spring:
   jpa:
     generate-ddl: false
     show-sql: true
-    hibernate.ddl-auto: validate
+    hibernate.ddl-auto: update
     properties.hibernate.jdbc.lob.non_contextual_creation: true
   mail:
     protocol: smtps

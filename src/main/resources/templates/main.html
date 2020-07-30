@@ -6,10 +6,16 @@
     <title>Главная страница</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="POST">
+    <button id="send" type="submit">Log out</button>
+</form>
 <div class="col-md-12" sec:authorize="hasRole('ROLE_DEAN')">
     <a href="/" th:href="@{/users}">Все пользователи</a>
 </div>
-<div class="col-md-12">
+<div class="col-md-12" sec:authorize="hasRole('ROLE_STUDENT')">
+    <a href="/" th:href="@{/checklist}">Мой обходной лист</a>
+</div>
+<div class="col-md-12" sec:authorize="hasAnyRole('DEAN', 'ACCOUNTANT', 'CPT', 'DORMITORY_WORKER', 'GRADUATING_DEPARTMENT', 'INSTITUTE_WORKER', 'OMP_KB')">
     <a href="/" th:href="@{/students}">Список студентов</a>
 </div>
 </body>

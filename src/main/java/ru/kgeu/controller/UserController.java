@@ -1,7 +1,10 @@
 package ru.kgeu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +38,9 @@ public class UserController {
     }
 
     @PostMapping
-    public String addNewUser(@ModelAttribute("newUser") UserRegistrationDto userDto) {
-        userService.save(userDto);
+    public String addNewUser(@ModelAttribute("newUser") UserRegistrationDto userDto,
+                             HttpServletRequest httpRequest) {
+        userService.save(userDto, httpRequest);
         return "redirect:" + ViewNames.User.VIEW_NAME;
     }
 }

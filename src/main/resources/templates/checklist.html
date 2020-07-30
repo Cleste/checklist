@@ -2,19 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Список студентов</title>
+    <title>Все пользователи</title>
 </head>
 <body>
 <form th:action="@{/logout}" method="POST">
     <button id="send" type="submit">Log out</button>
 </form>
 <a href="/" th:href="@{/}">Главная страница</a>
+<span th:text="${student.getFirstname()}"></span>
+<span th:text="${student.getLastname()}"></span>
+<span th:text="${student.getStudentGroup()}"></span>
 <table border="1">
     <thead>
     <tr>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Группа</th>
         <th>Деканат</th>
         <th>Выпускающая кафедра</th>
         <th>Бухгалтерия</th>
@@ -22,44 +22,37 @@
         <th>Институт</th>
         <th>ЦПТ</th>
         <th>ОМПиКБ</th>
-        <th>Задолжность</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="student : ${students}">
-        <td><span th:text="${student.getFirstname()}"></span></td>
-        <td><span th:text="${student.getLastname()}"></span></td>
-        <td><span th:text="${student.getStudentGroup()}"></span></td>
+    <tr>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('Деканат')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('Деканат')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('Деканат').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('Деканат')}">Нет</span>
         </td>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('Выпускающая кафедра')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('Выпускающая кафедра')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('Выпускающая кафедра').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('Выпускающая кафедра')}">Нет</span>
         </td>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('Бухгалтерия')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('Бухгалтерия')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('Бухгалтерия').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('Бухгалтерия')}">Нет</span>
         </td>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('Общежитие')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('Общежитие')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('Общежитие').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('Общежитие')}">Нет</span>
         </td>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('Институт')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('Институт')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('Институт').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('Институт')}">Нет</span>
         </td>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('ЦПТ')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('ЦПТ')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('ЦПТ').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('ЦПТ')}">Нет</span>
         </td>
         <td>
-            <h4 th:if="${student.getIndebtednesses().get('ОМПиКБ')}">Есть</h4>
+            <a th:if="${student.getIndebtednesses().get('ОМПиКБ')}" th:href="@{'/checklist/' + ${student.getIndebtednesses().get('ОМПиКБ').id}}">Есть</a>
             <span th:unless="${student.getIndebtednesses().get('ОМПиКБ')}">Нет</span>
-        </td>
-        <td>
-            <a href="/" th:href="@{indebtedness(id=${student.getId()})}">Посмотреть</a>
         </td>
     </tr>
     </tbody>

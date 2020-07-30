@@ -18,6 +18,7 @@ public class UserDetailsImpl implements UserDetails {
     private Long id;
     private String username;
     private String password;
+    private Boolean active;
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override
@@ -42,6 +43,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
     }
 }

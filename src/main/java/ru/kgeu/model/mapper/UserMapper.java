@@ -13,12 +13,12 @@ import ru.kgeu.model.entity.User;
 public interface UserMapper {
     User toUser(UserDto userDto);
 
-    @Mapping(source = "roles", target = "roleName")
+    @Mapping(source = "role", target = "roleName")
     UserDto toUserDto(User user);
 
     List<UserDto> toUserDtoList(List<User> userList);
 
-    default String mapRoleName(List<Role> roles) {
-        return roles.get(0).getRusName();
+    default String mapRoleName(Role role) {
+        return role.getRusName();
     }
 }

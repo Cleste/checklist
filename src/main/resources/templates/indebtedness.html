@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Задолжность</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="POST">
+    <button id="send" type="submit">Log out</button>
+</form>
+<a href="/" th:href="@{/}">Главная страница</a>
+<form th:action="@{/indebtedness}" method="post">
+    <div class="input-group">
+        <span th:text="${student.lastname}"></span>
+        <span th:text="${student.firstname}"></span>
+        <span th:text="${student.studentGroup}"></span>
+        <input hidden th:name="studentId" th:value="${student.id}"/>
+        <textarea th:if="${indebtedness}" th:text="${indebtedness.description}" th:name="description"></textarea>
+        <textarea th:unless="${indebtedness}" th:name="description"></textarea>
+        <button th:unless="${indebtedness}" type="submit">Добавить</button>
+        <button th:if="${indebtedness}" type="submit">Изменить</button>
+        <a th:if="${indebtedness}" th:href="@{'/notify/' + ${indebtedness.id}}">Уведомить</a>
+    </div>
+</form>
+<form th:if="${indebtedness}" th:action="@{/indebtedness/delete(id=${indebtedness.id})}" method="post">
+    <input hidden th:name="studentId" th:value="${student.id}"/>
+    <button  type="submit">Удалить</button>
+</form>
+</body>
+</html>

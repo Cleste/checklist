@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Задолжность</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="POST">
+    <button id="send" type="submit">Log out</button>
+</form>
+<a href="/" th:href="@{/}">Главная страница</a>
+<div>
+    <span th:text="${indebtedness.role}"></span>
+</div>
+<div>
+    <span th:if="${indebtedness.description}" th:text="${indebtedness.description}"></span>
+</div>
+</body>
+</html>

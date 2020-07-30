@@ -10,9 +10,28 @@ public interface ViewNames {
         String VIEW_NAME = "students";
         String PAGE_URL = Main.PAGE_URL + VIEW_NAME;
     }
+    interface Notify {
+        String PAGE_URL = Main.PAGE_URL + "notify";
+    }
 
     interface User {
         String VIEW_NAME = "users";
+        String PAGE_URL = Main.PAGE_URL + VIEW_NAME;
+    }
+
+    interface AccountActivation {
+        String VIEW_NAME = "activation";
+        String PAGE_URL = Main.PAGE_URL + VIEW_NAME;
+    }
+
+    interface CheckList {
+        String VIEW_NAME = "checklist";
+        String SINGLE_VIEW_NAME = "checklist_single";
+        String PAGE_URL = Main.PAGE_URL + VIEW_NAME;
+    }
+
+    interface Indebtedness {
+        String VIEW_NAME = "indebtedness";
         String PAGE_URL = Main.PAGE_URL + VIEW_NAME;
     }
 

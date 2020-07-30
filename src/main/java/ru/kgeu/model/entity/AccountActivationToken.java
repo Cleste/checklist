@@ -1,13 +1,12 @@
 package ru.kgeu.model.entity;
 
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,26 +19,24 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "role")
-public class Role {
+@Table(name = "account_activate_token")
+public class AccountActivationToken {
 
     @Id
     @SequenceGenerator(
-            name = "role_id_seq_Gen",
-            sequenceName = "role_id_seq",
+            name = "token_id_seq_Gen",
+            sequenceName = "token_id_seq",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_id_seq_Gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "token_id_seq_Gen")
     private Long id;
 
-    private String name;
+    private String token;
 
-    @Column(name = "rus_name")
-    private String rusName;
-
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

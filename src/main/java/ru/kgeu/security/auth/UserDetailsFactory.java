@@ -1,5 +1,6 @@
 package ru.kgeu.security.auth;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,15 +19,16 @@ public final class UserDetailsFactory {
                 .id(user.getId())
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .authorities(mapToGrantedAuthority(user.getRoles()))
+                .authorities(mapToGrantedAuthority(user.getRole()))
+                .active(user.getActive())
                 .build();
     }
 
     private static List<GrantedAuthority> mapToGrantedAuthority(
-            Collection<Role> roleForUsers) {
+            Role roleForUsers) {
 
-        return roleForUsers.stream().map(role ->
-                new SimpleGrantedAuthority(role.getName())).
-                collect(Collectors.toList());
+        ArrayList<GrantedAuthority> roles = new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority(roleForUsers.getName()));
+        return roles;
     }
 }

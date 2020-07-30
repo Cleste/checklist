@@ -8,6 +8,7 @@
 <form th:action="@{/logout}" method="POST">
     <button id="send" type="submit">Log out</button>
 </form>
+<a href="/" th:href="@{/}">Главная страница</a>
 <button onclick="hide('addStudent')">Добавить студента</button>
 <form id="addStudent" action="#" th:action="@{/users}" th:object="${newUser}"
       method="post">

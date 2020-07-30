@@ -28,8 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .anyRequest()
-                .authenticated()
+                .antMatchers(ViewNames.AccountActivation.PAGE_URL + "*").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage(ViewNames.Login.PAGE_URL)
