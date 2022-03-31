@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring.version>2.2.4.RELEASE</spring.version>
+        <spring.version>2.5.12</spring.version>
         <thymeleaf.extras.version>3.0.4.RELEASE</thymeleaf.extras.version>
         <mapstruct.version>1.3.0.Final</mapstruct.version>
     </properties>
